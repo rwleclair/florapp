@@ -2,7 +2,8 @@
 CREATE TABLE IF NOT EXISTS LeafMorphology (
     leafMorphologyId INTEGER NOT NULL PRIMARY KEY,
     leafShape TEXT,
-    leafShapeDesc TEXT
+    leafShapeDesc TEXT,
+    leafShapeImageDef BLOB
 );
 
 CREATE TABLE IF NOT EXISTS LeafMorphMembers (
