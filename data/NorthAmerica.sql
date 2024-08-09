@@ -1,14 +1,23 @@
+PRAGMA foreign_keys=OFF;
 
 CREATE TABLE IF NOT EXISTS LeafMorphology (
     leafMorphologyId INTEGER NOT NULL PRIMARY KEY,
     leafShape TEXT,
+    leafWidth INTEGER,
+    leafHeight TEXT,
+    leafApex TEXT,
+    leafBase TEXT,
+    leafPetiole TEXT,
+    leafMargins TEXT,
+    leafPubescenence TEXT,
     leafShapeDesc TEXT,
-    leafShapeImageDef BLOB
+    leafShapeImageDef BLOB,
+    leafShapeImage BLOB
 );
 
 CREATE TABLE IF NOT EXISTS LeafMorphMembers (
     leafMorphMemberId INTEGER NOT NULL PRIMARY KEY,
-    leafTraits TEXT,
+    leafTraits INTEGER,
     FOREIGN KEY(leafTraits) REFERENCES LeafMorphology(leafMorphologyId)
 );
 
