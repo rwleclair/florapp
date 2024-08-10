@@ -3,10 +3,12 @@ PRAGMA foreign_keys=OFF;
 CREATE TABLE IF NOT EXISTS LeafMorphology (
     leafMorphologyId INTEGER NOT NULL PRIMARY KEY,
     leafShape TEXT,
+    leafColor TEXT
     leafWidth INTEGER,
     leafHeight TEXT,
     leafApex TEXT,
     leafBase TEXT,
+    leafVenation TEXT,
     leafPetiole TEXT,
     leafMargins TEXT,
     leafPubescenence TEXT,
@@ -26,24 +28,37 @@ CREATE TABLE IF NOT EXISTS GrowthHabitsMorphology (
     growthHabitsMorpholgyId INTEGER NOT NULL PRIMARY KEY
 );
 
+CREATE TABLE IF NOT EXISTS GrowthHabitsTypeMorphology (
+    growthHabitsTypeMorpholgyId INTEGER NOT NULL PRIMARY KEY
+);
+
 CREATE TABLE IF NOT EXISTS GrowthHabitsMorphMembers (
     growthHabitsMorphMemberId INTEGER NOT NULL PRIMARY KEY,
+    growthHabitsType TEXT,
     growthHabitsTraits TEXT,
-    FOREIGN KEY(growthHabitsTraits) REFERENCES GrowthHabitsMorphology(HabitsMorphologyId)
+    FOREIGN KEY(growthHabitsTraits) REFERENCES GrowthHabitsMorphology(growthHabitsMorphologyId),
+    FOREIGN KEY(growHabitsType) REFERENCES GrowthHabitsTypeMorphology(growthHabitsTypeMorpholgyId)
 );
 
-CREATE TABLE IF NOT EXISTS BudMorphology (
-    budMorphologyId INTEGER NOT NULL PRIMARY KEY
+CREATE TABLE IF NOT EXISTS AxillaryBudMorphology (
+    axillaryBudMorphologyId INTEGER NOT NULL PRIMARY KEY,
+    axillaryBudShape TEXT,
+    axillaryBudColor TEXT,
+    axillaryBudDistribution TEXT,
+    axillaryBudPubescence TEXT
 );
 
-CREATE TABLE IF NOT EXISTS BudMorphMembers (
-    budMorphMemberId INTEGER NOT NULL PRIMARY KEY,
-    budTraits TEXT,
-    FOREIGN KEY(budTraits) REFERENCES BudMorphology(budMorphologyId)
+CREATE TABLE IF NOT EXISTS AxillaryudMorphMembers (
+    axillarybudMorphMemberId INTEGER NOT NULL PRIMARY KEY,
+    axillaryBudTraits TEXT,
+    FOREIGN KEY(axillaryBudTraits) REFERENCES AxillarybudMorphology(axillaryBudMorphologyId)
 );
 
 CREATE TABLE IF NOT EXISTS StemMorphology (
-    stemMorphologyId INTEGER NOT NULL PRIMARY KEY
+    stemMorphologyId INTEGER NOT NULL PRIMARY KEY,
+    stemColor TEXT,
+    stemLength INTEGER,
+    stemPubescence TEXT
 );
 
 CREATE TABLE IF NOT EXISTS StemMorphMembers (
@@ -80,8 +95,6 @@ CREATE TABLE IF NOT EXISTS Morphology (
     stemMorphMemberId INTEGER,
     barkMorphMemberId INTEGER,
     rootsMorphMemberId INTEGER,
-
-
     FOREIGN KEY(leafMorphMemberId) REFERENCES LeafMorphMembers(leafMorphMemberId)
 );
 
