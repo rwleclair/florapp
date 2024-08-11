@@ -1,4 +1,16 @@
-# Taproot
+# Taproot: *Digital flora dichotomous identification aid*
+
+## Goals
+
+### Overview
+
+- Allow custom choice of local data storage footprint during installation, while
+maintaining a default installation size of 1.5G, which provides full offline and
+mobile functionality.  
+- To reduce uneede UI clutter, fave range of information display settings that
+correlates to user knowledge and experience levels.  
+- Create a dichotomous key that asychronously requests morphological data based
+upon reduction of the number of identification choices.  
 
 ### Database Structure/Building
 
